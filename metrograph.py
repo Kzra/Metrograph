@@ -15,7 +15,8 @@ def Metrograph():
     beat_counter = 1
     x_start_pos = 0
     y_start_pos = 0
-    
+    colours = ['red','green','blue','black']
+    cch = 0 
     dur = True
 	
     angle = 360 / time_sig
@@ -44,7 +45,7 @@ def Metrograph():
     
     print('Press CTRL + C to exit') 
 	
-	
+    
 	#begin the metronome
     start = time.perf_counter()
     while dur == True:
@@ -55,9 +56,15 @@ def Metrograph():
             turtle.forward(size)     
             n = n + bpm
             if beat_counter % time_sig == 1: 
-                turtle.fillcolor('red')
+                turtle.fillcolor('red')   
             else:
-                turtle.fillcolor('blue')
+                turtle.fillcolor('blue')  
+                if beat_counter % time_sig == 0:
+                    turtle.pencolor(colours[cch])
+                    if cch == 3:
+                        cch = 0
+                    else:
+                        cch = cch + 1
                 
             beat_counter = beat_counter + 1
 
